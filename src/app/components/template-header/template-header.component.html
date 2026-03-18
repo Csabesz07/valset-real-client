@@ -1,0 +1,27 @@
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" routerLink="/" aria-label="Go to the home page">
+      <span class="site-header__eyebrow">Valset starter</span>
+      <span class="site-header__title">{{ title() }}</span>
+    </a>
+
+    @if (hasMenuItems()) {
+      <nav aria-label="Primary" class="site-header__nav">
+        <ul class="site-header__menu">
+          @for (item of menuItems(); track item.route) {
+            <li>
+              <a
+                class="site-header__link"
+                [routerLink]="item.route"
+                routerLinkActive="site-header__link--active"
+                [routerLinkActiveOptions]="{ exact: true }"
+              >
+                {{ item.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </nav>
+    }
+  </div>
+</header>

@@ -1,0 +1,33 @@
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<app-template-header [title]="title" [menuItems]="menuItems()" />
+
+<main class="template-home" id="main-content">
+  <section class="hero">
+    <p class="hero__eyebrow">Angular template</p>
+    <h1>Template project ready for feature work</h1>
+    <p class="hero__summary">
+      This starter ships with a reusable page shell, a header ready for project
+      navigation, and the shared `valset-core` guard and interceptor already
+      connected.
+    </p>
+  </section>
+
+  <section aria-labelledby="starter-highlights" class="feature-grid">
+    <div class="feature-grid__intro">
+      <p class="feature-grid__label">Starting points</p>
+      <h2 id="starter-highlights">What this template already gives you</h2>
+      <p>
+        Replace the body content, populate the menu items in the page
+        TypeScript, and expand routing from a working baseline.
+      </p>
+    </div>
+
+    @for (feature of features; track feature.title) {
+      <article class="feature-card">
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
+      </article>
+    }
+  </section>
+</main>
