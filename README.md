@@ -6,7 +6,9 @@ git checkout -b <branch-name>
 git push <remote-name> <branch-name>
 
 git fetch template
-git rebase template/main
+git rebase template/master
+
+git push --force-with-lease
 
 # ValsetFeTemplate
 
