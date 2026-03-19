@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 export interface HeaderMenuItem {
@@ -19,7 +14,7 @@ export interface HeaderMenuItem {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TemplateHeaderComponent {
-  readonly title = input('Valset Template');
+  readonly title = input('Valset Template new');
   readonly menuItems = input<readonly HeaderMenuItem[]>([]);
 
   protected readonly hasMenuItems = computed(() => this.menuItems().length > 0);
