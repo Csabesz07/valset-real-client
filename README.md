@@ -1,3 +1,13 @@
+git remote rename origin template
+git remote add origin git@github.com:your-org/my-app.git
+git remote set-url origin https://github.com/Csabesz07/valset-real-client.git
+
+git checkout -b <branch-name>
+git push <remote-name> <branch-name>
+
+git fetch template
+git rebase template/main
+
 # ValsetFeTemplate
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.2.
