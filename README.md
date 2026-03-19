@@ -1,14 +1,35 @@
+```md
+# Az origin jelenleg a template originje, nevezzük template-nek inkább
+
 git remote rename origin template
+
+# Hozzuk létre a saját origin-jét a repo-nak
+
 git remote add origin git@github.com:your-org/my-app.git
-git remote set-url origin https://github.com/Csabesz07/valset-real-client.git
+
+> Ha véletlenül elírtad a remote url-t ezzel tudod megváltoztatni
+> git remote set-url origin https://github.com/Csabesz07/valset-real-client.git
+
+# Az új remote-nak (origin) hozzunk létre egy branch-et
 
 git checkout -b <branch-name>
+
+# Ezt pusholjuk is fel, a remote name legyen az origin, innentől közös a history-ja a két cuccmáknak
+
 git push <remote-name> <branch-name>
 
+# Amennyiben volt változás a template remote-on, akkor fetch-eljük
+
 git fetch template
+
+# Majd rebase-eljük egy clean history-val a projektet
+
 git rebase template/master
 
+# Fontos, hogy rebase után ne pulloljunk, hanem egyből push. A force-with-lease nem fogja felül írni mások commitjait.
+
 git push --force-with-lease
+```
 
 # ValsetFeTemplate
 
