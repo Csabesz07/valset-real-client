@@ -17,7 +17,5 @@ export class TemplateHeaderComponent {
   readonly title = input('Valset Template new');
   readonly menuItems = input<readonly HeaderMenuItem[]>([]);
 
-  //hehe
-
   protected readonly hasMenuItems = computed(() => this.menuItems().length > 0);
 }
