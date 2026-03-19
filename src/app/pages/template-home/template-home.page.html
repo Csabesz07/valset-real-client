@@ -1,33 +1,110 @@
 <a class="skip-link" href="#main-content">Skip to main content</a>
 
-<app-template-header [title]="title" [menuItems]="menuItems()" />
+<app-template-header [title]="title" />
 
 <main class="template-home" id="main-content">
-  <section class="hero">
-    <p class="hero__eyebrow">Angular template</p>
-    <h1>Template project ready for feature work</h1>
-    <p class="hero__summary">
-      This starter ships with a reusable page shell, a header ready for project
-      navigation, and the shared `valset-core` guard and interceptor already
-      connected.
-    </p>
+  <section aria-labelledby="home-heading" class="hero">
+    <div class="hero__content">
+      <p class="hero__eyebrow">Investments and fund managers</p>
+      <h1 id="home-heading">Steady capital allocation for clients who invest across cycles.</h1>
+      <p class="hero__summary">
+        Northstar Capital combines long-horizon portfolio construction, active manager
+        oversight, and clear reporting so clients can move from cash drag to durable
+        compounding.
+      </p>
+
+      <div class="hero__actions">
+        <a class="hero__cta hero__cta--primary" href="#funds">Explore funds</a>
+        <a class="hero__cta" href="#managers">Meet the managers</a>
+      </div>
+
+      <dl class="metric-grid" aria-label="Investment platform highlights">
+        @for (metric of metrics; track metric.label) {
+          <div class="metric-card">
+            <dt>{{ metric.value }}</dt>
+            <dd>{{ metric.label }}</dd>
+            <p>{{ metric.detail }}</p>
+          </div>
+        }
+      </dl>
+    </div>
+
+    <aside aria-labelledby="spotlight-title" class="manager-spotlight">
+      <div class="manager-spotlight__copy">
+        <p class="manager-spotlight__eyebrow">Manager spotlight</p>
+        <h2 id="spotlight-title">Mochi, multi-asset lead</h2>
+        <p>
+          The shared `valset-core` cat avatar now represents the desk that keeps
+          tactical rebalancing calm, curious, and appropriately suspicious of expensive
+          assets.
+        </p>
+      </div>
+
+      <lib-cat-profile-image
+        altText="Portrait of Mochi, the lead fund manager mascot"
+        buttonLabel="Refresh manager portrait"
+        [size]="148"
+      />
+    </aside>
   </section>
 
-  <section aria-labelledby="starter-highlights" class="feature-grid">
-    <div class="feature-grid__intro">
-      <p class="feature-grid__label">Starting points</p>
-      <h2 id="starter-highlights">What this template already gives you</h2>
+  <section aria-labelledby="funds-heading" class="section-block" id="funds">
+    <div class="section-heading">
+      <p class="section-heading__eyebrow">Strategies</p>
+      <h2 id="funds-heading">Flagship funds built around distinct mandates</h2>
       <p>
-        Replace the body content, populate the menu items in the page
-        TypeScript, and expand routing from a working baseline.
+        Each sleeve is designed to play a specific role in a client portfolio rather
+        than chasing overlapping exposure.
       </p>
     </div>
 
-    @for (feature of features; track feature.title) {
-      <article class="feature-card">
-        <h3>{{ feature.title }}</h3>
-        <p>{{ feature.description }}</p>
-      </article>
-    }
+    <div class="fund-grid">
+      @for (fund of funds; track fund.name) {
+        <article class="fund-card">
+          <p class="fund-card__label">{{ fund.riskProfile }}</p>
+          <h3>{{ fund.name }}</h3>
+          <p>{{ fund.focus }}</p>
+          <p>{{ fund.allocation }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section aria-labelledby="managers-heading" class="section-block" id="managers">
+    <div class="section-heading">
+      <p class="section-heading__eyebrow">Investment team</p>
+      <h2 id="managers-heading">Fund managers with explicit portfolio jobs</h2>
+      <p>
+        The team structure separates macro allocation, credit underwriting, and public
+        equity selection so decisions stay accountable.
+      </p>
+    </div>
+
+    <div class="manager-grid">
+      @for (manager of managers; track manager.name) {
+        <article class="manager-card">
+          <p class="manager-card__title">{{ manager.title }}</p>
+          <h3>{{ manager.name }}</h3>
+          <p class="manager-card__specialty">{{ manager.specialty }}</p>
+          <p>{{ manager.philosophy }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section aria-labelledby="outlook-heading" class="section-block" id="outlook">
+    <div class="section-heading">
+      <p class="section-heading__eyebrow">Quarterly view</p>
+      <h2 id="outlook-heading">Where the platform is leaning next</h2>
+    </div>
+
+    <div class="outlook-list" role="list">
+      @for (point of outlook; track point.title) {
+        <article class="outlook-card" role="listitem">
+          <h3>{{ point.title }}</h3>
+          <p>{{ point.description }}</p>
+        </article>
+      }
+    </div>
   </section>
 </main>

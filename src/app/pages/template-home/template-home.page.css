@@ -24,7 +24,7 @@
   text-decoration: none;
 }
 
-.skip-link:focus {
+.skip-link:focus-visible {
   top: 1rem;
 }
 
@@ -32,13 +32,16 @@
   margin: 0 auto;
   display: grid;
   max-width: 80rem;
-  gap: 2.5rem;
+  gap: 3rem;
   padding: 3rem 1.5rem 4rem;
 }
 
 .hero {
   position: relative;
   overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(18rem, 0.95fr);
+  gap: 2rem;
   border: 1px solid rgb(16 34 36 / 10%);
   border-radius: 2rem;
   background:
@@ -48,18 +51,18 @@
   padding: clamp(2rem, 6vw, 4rem);
 }
 
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: auto -2rem -3rem auto;
-  width: 14rem;
-  height: 14rem;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgb(201 107 43 / 20%), transparent 70%);
+.hero__content,
+.manager-spotlight,
+.section-heading {
+  position: relative;
+  z-index: 1;
 }
 
 .hero__eyebrow,
-.feature-grid__label {
+.section-heading__eyebrow,
+.manager-spotlight__eyebrow,
+.fund-card__label,
+.manager-card__title {
   margin: 0 0 0.75rem;
   color: rgb(125 85 30);
   font-size: 0.85rem;
@@ -77,7 +80,7 @@ h3 {
 }
 
 h1 {
-  max-width: 12ch;
+  max-width: 13ch;
   font-size: clamp(2.5rem, 7vw, 4.8rem);
 }
 
@@ -90,8 +93,12 @@ h3 {
 }
 
 .hero__summary,
-.feature-grid__intro p,
-.feature-card p {
+.section-heading p,
+.metric-card p,
+.fund-card p,
+.manager-card p,
+.manager-spotlight p,
+.outlook-card p {
   max-width: 60ch;
   color: rgb(51 70 72);
   font-size: 1.05rem;
@@ -102,40 +109,149 @@ h3 {
   margin: 1.25rem 0 0;
 }
 
-.feature-grid {
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 1.5rem;
+}
+
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  border: 1px solid rgb(16 34 36 / 14%);
+  border-radius: 999px;
+  background: rgb(255 252 247 / 90%);
+  color: rgb(20 36 38);
+  padding: 0.7rem 1.1rem;
+  text-decoration: none;
+}
+
+.hero__cta--primary {
+  background: rgb(24 86 90);
+  border-color: rgb(24 86 90);
+  color: rgb(255 250 240);
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 2rem 0 0;
+}
+
+.metric-card {
+  border: 1px solid rgb(16 34 36 / 10%);
+  border-radius: 1.5rem;
+  background: rgb(255 252 247 / 84%);
+  box-shadow: 0 1rem 2.5rem rgb(35 55 57 / 7%);
+  padding: 1.25rem;
+}
+
+.metric-card dt {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.metric-card dd,
+.metric-card p,
+.section-heading p,
+.fund-card p,
+.manager-card p,
+.manager-spotlight p,
+.outlook-card p {
+  margin: 0;
+}
+
+.metric-card dd {
+  margin-top: 0.65rem;
+  font-weight: 700;
+}
+
+.metric-card p {
+  margin-top: 0.75rem;
+  font-size: 0.98rem;
+}
+
+.manager-spotlight {
+  display: grid;
+  align-content: start;
+  gap: 1.5rem;
+  border: 1px solid rgb(16 34 36 / 10%);
+  border-radius: 1.75rem;
+  background: rgb(248 245 238 / 96%);
+  padding: 1.5rem;
+}
+
+.section-block {
+  display: grid;
+  gap: 1.5rem;
+  scroll-margin-top: 6rem;
+}
+
+.section-heading {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.section-heading__eyebrow,
+.fund-card__label,
+.manager-card__title {
+  margin-bottom: 0;
+}
+
+.fund-grid,
+.manager-grid,
+.outlook-list {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 
-.feature-grid__intro {
-  grid-column: span 12;
-  padding: 1rem 0 1.25rem;
-}
-
-.feature-grid__intro p {
-  margin: 1rem 0 0;
-}
-
-.feature-card {
+.fund-card,
+.manager-card,
+.outlook-card {
   grid-column: span 4;
   border: 1px solid rgb(16 34 36 / 10%);
-  border-radius: 1.5rem;
+  border-radius: 1.6rem;
   background: rgb(255 252 247 / 88%);
   box-shadow: 0 1rem 2.5rem rgb(35 55 57 / 8%);
   padding: 1.5rem;
 }
 
-.feature-card h3 {
-  margin-bottom: 0.75rem;
+.fund-card h3,
+.manager-card h3,
+.outlook-card h3 {
+  margin: 0.55rem 0 0.9rem;
 }
 
-.feature-card p {
-  margin: 0;
+.manager-card__specialty {
+  color: rgb(24 86 90);
+  font-weight: 700;
+}
+
+.hero__cta:focus-visible,
+.hero__cta:hover {
+  outline: 3px solid rgb(201 107 43);
+  outline-offset: 3px;
 }
 
 @media (max-width: 64rem) {
-  .feature-card {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fund-card,
+  .manager-card,
+  .outlook-card {
     grid-column: span 6;
   }
 }
@@ -145,8 +261,17 @@ h3 {
     padding-inline: 1rem;
   }
 
-  .feature-card,
-  .feature-grid__intro {
+  .hero__actions {
+    flex-direction: column;
+  }
+
+  .hero__cta {
+    width: 100%;
+  }
+
+  .fund-card,
+  .manager-card,
+  .outlook-card {
     grid-column: span 12;
   }
 }

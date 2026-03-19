@@ -1,7 +1,7 @@
 <header class="site-header">
   <div class="site-header__inner">
     <a class="site-header__brand" routerLink="/" aria-label="Go to the home page">
-      <span class="site-header__eyebrow">Valset starter</span>
+      <span class="site-header__eyebrow">Investment house</span>
       <span class="site-header__title">{{ title() }}</span>
     </a>
 
@@ -13,6 +13,7 @@
               <a
                 class="site-header__link"
                 [routerLink]="item.route"
+                [fragment]="item.fragment"
                 routerLinkActive="site-header__link--active"
                 [routerLinkActiveOptions]="{ exact: true }"
               >

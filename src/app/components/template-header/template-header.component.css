@@ -17,7 +17,8 @@
   max-width: 80rem;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.25rem;
+  flex-wrap: wrap;
   padding: 1rem 1.5rem;
 }
 
@@ -47,10 +48,15 @@
 .site-header__menu {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.75rem;
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.site-header__nav {
+  margin-left: auto;
 }
 
 .site-header__link {
@@ -77,5 +83,10 @@
 @media (max-width: 48rem) {
   .site-header__inner {
     padding-inline: 1rem;
+  }
+
+  .site-header__nav {
+    margin-left: 0;
+    width: 100%;
   }
 }
